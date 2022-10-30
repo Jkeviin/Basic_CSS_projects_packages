@@ -1,0 +1,26 @@
+*,*::before, *::after {box-sizing: border-box;}
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    background-color: #1e1f23;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container img
+{
+    width: 80px;
+    filter: brightness(1%);  /* Se le quita el brillo a la imagen */
+    -webkit-filter: brightness(1%);
+}
+img{
+    cursor: pointer;
+}
+.container img:hover{
+    filter: none;  /* Filter none porque no queremos que se vea el filtro que en el caso de este ejemplo es el brillo */
+}
+

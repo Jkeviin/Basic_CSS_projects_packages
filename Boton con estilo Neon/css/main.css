@@ -1,0 +1,107 @@
+*,*::before, *::after {box-sizing: border-box;}
+
+html,body{
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    background-color: #1e1f23;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Anton', sans-serif;
+}
+/* Butoon - Botón */
+button
+{
+    border: none;
+    position: relative;
+    border-radius: 10px;
+    background-color: #1e1f23;
+    padding: .6em 5.8em;
+}
+.box{
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+h1{
+    float: left;
+    padding-left:0.8rem;
+}
+
+a
+{
+    text-decoration: none;
+    font-size: 30px;
+    background: -webkit-linear-gradient(-45deg, #ff00c1, #00fff9);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    float: left;
+} /* En resumen, el texto se muestra en color transparente y el fondo es el degradado. */
+
+button::before, button::after
+{
+    content: '';
+    position: absolute;
+    background: linear-gradient(var(--rotate), #ff00c1 0%, #9600ff 25%, #4900ff
+                                                50%, #00b8ff,80%, #00fff9 100%);
+    width: 105%;
+    height: 110%;
+    left: -2.5% ;
+    top: -5%;
+    z-index: -1;
+    border-radius: 10px;
+    transition: --rotate 9999s linear ;
+} /* El botón tiene un degradado que se mueve de izquierda a derecha. */
+
+a:hover
+{
+    color: white;
+}
+
+/* Animation */
+button:before, button::after
+{
+    --rotate:3600deg;
+    transition: --rotate 10s linear ;
+    animation:  spin 1s infinite;
+}
+button:hover::before
+{
+    animation: fade 1.2s infinite;
+}
+/* Animattion - Animación */
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 130deg;
+    inherits: false;
+}
+@keyframes spin{
+    0%{
+        --rotate:0deg ;
+    }
+    100%{
+        --rotate:360deg
+    }
+}
+@keyframes fade{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(10px);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(1.4);
+        filter: blur(10px);
+    }
+}
+
+
+/* --rotate es una propiedad personalizada que se utiliza para rotar el degradado. */
+

@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  background-color: #1e1f23;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --g: Es el Gap, es el espacio entre los elementos */
+/* --s: Es el Size, es el tamaño de los elementos */
+/* --c: Es el Color, es el color de los elementos */
+/* --_x: Es el eje X, es el eje horizontal */
+/* --_y: Es el eje Y, es el eje vertical */
+
+/* --_i: Es el índice, es el número de elementos */
+
+/* clip-path: es la forma de los elementos */
+
+
+.gallery {
+  --g: 8px; /* the gap */
+  --s: 400px; /* the size */
+
+  display: grid;
+  border-radius: 20%;
+}
+.gallery img {
+  padding: 20px;
+  filter: drop-shadow(1px 1px 7px rgb(203, 201, 201));
+  grid-area: 1/1;
+  width: 400px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: translate(var(--_x, 0), var(--_y, 0));
+  cursor: pointer;
+  z-index: 0;
+  transition: 0.3s, z-index 0s 0.3s;
+  -webkit-transform: translate(var(--_x, 0), var(--_y, 0));
+  -moz-transform: translate(var(--_x, 0), var(--_y, 0));
+  -ms-transform: translate(var(--_x, 0), var(--_y, 0));
+  -o-transform: translate(var(--_x, 0), var(--_y, 0));
+}  /* En resumidas palabras, es la imagen que se va a mover, ejemplo: la imagen de la izquierda */
+
+.gallery img:hover {
+  --_i: 1;
+  z-index: 1;
+  transition: transform 0.2s, clip-path 0.3s 0.2s, z-index 0s;
+} /* Lo que hace es que cuando el mouse pasa por encima de la imagen, la imagen se agranda y se mueve hacia arriba */
+
+.gallery:hover img {
+  transform: translate(0, 0);
+}
+
+.gallery > img:nth-child(1) {
+  clip-path: polygon(
+    50% 50%,
+    calc(50% * var(--_i, 0)) calc(120% * var(--_i, 0)),
+    0 calc(100% * var(--_i, 0)),
+    0 0,
+    100% 0,
+    100% calc(100% * var(--_i, 0)),
+    calc(100% - 50% * var(--_i, 0)) calc(120% * var(--_i, 0))
+  );
+  --_y: calc(-1 * var(--g));  /*  Lo que hace es que cuando el mouse pasa por encima de la imagen, la imagen se mueve hacia arriba */
+}/* En resumidas palabras, lo que hace es que el primer elemento se mueva hacia arriba */
+
+.gallery > img:nth-child(2) {
+  clip-path: polygon(
+    50% 50%,
+    calc(100% - 120% * var(--_i, 0)) calc(50% * var(--_i, 0)),
+    calc(100% - 100% * var(--_i, 0)) 0,
+    100% 0,
+    100% 100%,
+    calc(100% - 100% * var(--_i, 0)) 100%,
+    calc(100% - 120% * var(--_i, 0)) calc(100% - 50% * var(--_i, 0))
+  ); /* Esto crea la forma de la imagen */
+  --_x: var(--g);
+}/*  En resumidas palabras, lo que hace es que el segundo elemento se mueva hacia la derecha */
+
+.gallery > img:nth-child(3) {
+  clip-path: polygon(
+    50% 50%,
+    calc(100% - 50% * var(--_i, 0)) calc(100% - 120% * var(--_i, 0)),
+    100% calc(100% - 120% * var(--_i, 0)),
+    100% 100%,
+    0 100%,
+    0 calc(100% - 100% * var(--_i, 0)),
+    calc(50% * var(--_i, 0)) calc(100% - 120% * var(--_i, 0))
+  );
+  --_y: var(--g);
+} /* En resumidas palabras, lo que hace es que el tercer elemento se mueva hacia abajo */
+
+.gallery > img:nth-child(4) {
+  clip-path: polygon(
+    50% 50%,
+    calc(120% * var(--_i, 0)) calc(50% * var(--_i, 0)),
+    calc(100% * var(--_i, 0)) 0,
+    0 0,
+    0 100%,
+    calc(100% * var(--_i, 0)) 100%,
+    calc(120% * var(--_i, 0)) calc(100% - 50% * var(--_i, 0))
+  );
+  --_x: calc(-1 * var(--g));
+} /* En resumidas palabras, lo que hace es que el cuarto elemento se mueva hacia la izquierda */

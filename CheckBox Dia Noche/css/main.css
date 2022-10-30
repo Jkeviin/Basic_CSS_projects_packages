@@ -1,0 +1,64 @@
+*, *::before, *::after {box-sizing: border-box;}
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    background-color: #1e1f23;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* Backgroud - Button */
+label
+{
+    position: relative;
+    width: 350px;
+    height: 150px;
+    border-radius: 75px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1e1f23;
+    -webkit-box-shadow: 12px 12px 24px #1a1a1e, -12px -12px 24px #232428;
+    box-shadow: 12px 12px 24px #1a1a1e, -12px -12px 24px #232428;
+
+}
+/* Effect - Button */
+label input{
+    appearance: none; /* Appearance es para que la apariencia del input sea la misma en todos los navegadores */
+}
+label span
+{
+    position: absolute;
+    left: 0;
+    width: 175px;
+    height: 150px;
+    background: url(../assets/img/one.png);
+    background-size: auto 150px;
+    background-repeat: no-repeat;
+    transition: 1.5s;
+    transform: rotate(-180deg);
+    transform-origin:75px ; /* Esto es para que el efecto de rotación se haga desde el centro del circulo */ /* Esto funciona ya que el centro del circulo es el 50% de la altura y el 50% de la anchura */
+}
+label input:checked ~ span
+{
+    left: 199px;  /*  Este left es para desplazar el span hacia la derecha  del tamaño del label */
+    background: url(../assets/img/two.png);  /*  Este background es para cambiar la imagen */
+    background-size: auto 150px;  /*  Este background-size es para cambiar el tamaño de la imagen */
+    background-repeat: no-repeat;  /*  Este background-repeat es para que la imagen no se repita */
+    filter:drop-shadow(0 0 50px  rgba(253, 255, 235, 0.8));  /*  Este filter es para agregar un efecto de sombra, para dar un efecto de luz */
+    -webkit-filter:drop-shadow(0 0 50px  rgba(253, 255, 235, 0.8));
+    transform: rotate(360deg);  /*  Este transform es para rotar la imagen */
+    -webkit-transform: rotate(360deg);  /*  Este transform es para rotar la imagen */
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+} /* Lo que hace esto es que cuando se active el input, se mueva el span a la derecha y cambie la imagen de fondo */
+/* ~ es para seleccionar el hermano siguiente, en pocas palabras, el span que esta despues del input */
+
