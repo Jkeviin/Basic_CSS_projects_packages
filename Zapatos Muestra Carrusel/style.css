@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  body {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 2rem;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bg {
+    background-image: url("https://i.ibb.co/sg9qLgT/IMG-2140.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+}
+
+  .carousel .carousel-item,
+  .carousel-item-hidden {
+    display: none;
+  }
+  
+  .carousel .carousel-item-visible {
+    display: block;
+    animation: fadeVisibility;
+    animation-duration: 0.5s;
+  }
+  
+  .carousel .carousel-item img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+  
+  .carousel .carousel-actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .carousel .carousel-actions #carousel-button-prev {
+    border: none;
+    background: black;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    box-shadow: 10px 10px 15px #b80e1a;
+    margin-left: -20px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+  
+  .carousel .carousel-actions #carousel-button-next {
+    border: none;
+    background: black;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    box-shadow: -10px 10px 15px #b80e1a;
+    margin-right: 10px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+  }
+  
+  @keyframes fadeVisibility {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  /* hover */
+    .carousel .carousel-actions #carousel-button-prev:hover {
+        background: #b80e1a;
+        color: black;
+        box-shadow: 10px 10px 15px #b80e1a;
+        cursor: pointer;
+    }
+
+    .carousel .carousel-actions #carousel-button-next:hover {
+        background: #b80e1a;
+        color: black;
+        box-shadow: -10px 10px 15px #b80e1a;
+        cursor: pointer;
+    }
